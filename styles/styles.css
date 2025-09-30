@@ -338,10 +338,15 @@ body.green-theme {
 /*theme header-footer*/
 body.red-theme header .nav-wrapper,
 body.red-theme footer {
-  background-color: var(--main-accent-color);
-  color: var(--text-light);
+  background-color: #fff;
+  color: #000;
 }
-
+body.red-theme header nav .nav-sections ul > li > a{
+ color:#000;
+}
+body.red-theme header .nav-wrapper nav .nav-sections ul > li > a:hover {
+  color: #dc2626;
+}
 body.blue-theme header .nav-wrapper,
 body.blue-theme footer {
   background-color: var(--main-accent-color);
@@ -353,12 +358,7 @@ body.green-theme footer {
   color: var(--text-light);
 }
 
-body.red-theme header .nav-wrapper nav .nav-sections ul > li > a::before{
-  background: var(--text-light);
-}
-body.red-theme header .nav-wrapper nav .nav-sections ul > li > a:hover{
-  color: var(--text-light);
-}
+
 body.green-theme header .nav-wrapper nav .nav-sections ul > li > a::before{
   background: var(--text-light);
 }
