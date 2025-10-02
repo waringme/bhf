@@ -409,6 +409,7 @@ header nav .nav-tools .icon-search-light  {
   height: 20px;
   width: 20px;
   margin-bottom: 5px;
+  background-color: red;
 }
 
 /* ensure search and language switcher sit side-by-side inside tools */
