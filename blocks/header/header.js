@@ -228,7 +228,7 @@ function createSearchBox() {
     const searchInputContainer = div({ class: 'search-input-container' });
     const searchInputBox = document.createElement('input');
     const searchIcon = img({ class: 'search-icon' });
-    searchIcon.src = `${window.hlx.codeBasePath}/icons/search.svg`;
+    searchIcon.src = `${window.hlx.codeBasePath}/icons/search-light.svg`;
     searchIcon.alt = 'search';
     searchIcon.addEventListener('click', () => {
       if (searchInputBox.value) {
