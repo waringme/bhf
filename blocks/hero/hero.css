@@ -92,7 +92,7 @@
 }
 
 .hero-wrapper .button-container.cta-button a.button:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
   color: var(--text-light) !important;
   border-color: var(--text-light) !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
