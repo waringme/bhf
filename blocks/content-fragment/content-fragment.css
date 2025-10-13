@@ -40,6 +40,25 @@
   align-items: center;
 }
 
+/* Text Color Variants */
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-white,
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-white .cftitle,
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-white .cfsubtitle,
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-white .cfdescription,
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-white a,
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-white a::after {
+  color: #fff;
+}
+
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-black,
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-black .cftitle,
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-black .cfsubtitle,
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-black .cfdescription,
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-black a,
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-black a::after {
+  color: #000;
+}
+
 .content-fragment-wrapper .content-fragment .banner-content .banner-detail p {
   margin: 10px 0;
 }

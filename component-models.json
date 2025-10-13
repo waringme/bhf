@@ -596,6 +596,16 @@
       },
       {
         "component": "select",
+        "name": "textcolor",
+        "label": "Text Color",
+        "options": [
+          { "name": "default", "value": "" },
+          { "name": "White", "value": "text-white" },
+          { "name": "Black", "value": "text-black" }
+        ]
+      },
+      {
+        "component": "select",
         "name": "ctastyle",
         "label": "CTA Style",
         "options": [
