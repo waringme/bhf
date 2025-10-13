@@ -320,8 +320,8 @@ body.gray-theme {
 
 
 body.red-theme {
-  --main-accent-color: #DC2626;
-  --link-hover-color: #EF4444;
+  --main-accent-color: #ee002d;
+  --link-hover-color: #ee002d;
 }
 
 body.blue-theme {
@@ -1058,4 +1058,12 @@ table {
 }
 .banner-detail .cfsubtitle {
   max-width: 700px;
+}
+
+.red-theme .content-fragment.block .cta-button-secondary a.button{
+  border: 2px solid #fff !important;
+  color:#fff !important;
+}
+.red-theme .content-fragment.block .cta-button-secondary a.button::after{
+  color:#fff !important;
 }
