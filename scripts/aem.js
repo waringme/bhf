@@ -358,7 +358,12 @@ function decorateTemplateAndTheme() {
   const template = getMetadata('template');
   if (template) addClasses(document.body, template);
   const theme = getMetadata('theme');
-  if (theme) addClasses(document.body, theme);
+  if (theme) {
+    addClasses(document.body, theme);
+  } else {
+    // Default to red theme when no theme metadata is provided
+    addClasses(document.body, 'red-theme');
+  }
 }
 
 /**
