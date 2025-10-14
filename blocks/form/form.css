@@ -427,7 +427,7 @@ main form .file-wrapper > button{
     display: flex;
 }
 
-:hover {
+main .form button:hover {
     background: var(--form-button-background-hover-color);
 }
 
