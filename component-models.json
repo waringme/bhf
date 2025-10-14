@@ -555,7 +555,7 @@
         "options": [
           {
             "name": "default",
-            "value": ""
+            "value": "default-cf-overlay"
           },
           {
             "name": "Image Left",

@@ -40,6 +40,23 @@
   align-items: center;
 }
 
+.content-fragment-wrapper .content-fragment .banner-content.default-cf-overlay .banner-detail .cftext-overlay {
+  background: rgba(0,0,0,0.5);
+  padding: 24px;
+  border-radius: 8px;
+  width: min(100%, 520px);
+}
+
+/* adjust overlay color for black text variant */
+.content-fragment-wrapper .content-fragment .banner-content.default-cf-overlay .banner-detail.text-black .cftext-overlay {
+  background: rgba(255,255,255,0.6);
+}
+.content-fragment-wrapper .content-fragment .banner-content.default-cf-overlay .banner-detail .cfdescription {
+  width: auto;
+}
+.banner-content.default-cf-overlay .banner-detail .cfsubtitle {
+  max-width: unset;
+}
 /* Text Color Variants */
 .content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-white,
 .content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-white .cftitle,
