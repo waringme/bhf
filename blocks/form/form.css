@@ -415,7 +415,7 @@ input::file-selector-button {
 
 main .form button {
     color: var(--form-button-color);
-    background: var(--form-button-background-color);
+    background: var(--main-accent-color);
     border: var(--form-button-border);
     padding: var(--form-button-padding);
     font-size: var(--form-button-font-size);
@@ -427,7 +427,7 @@ main form .file-wrapper > button{
     display: flex;
 }
 
-main .form button:hover {
+:hover {
     background: var(--form-button-background-hover-color);
 }
 
@@ -517,9 +517,9 @@ main .form .button-wrapper button {
 }
 
 main .form .button-wrapper button:hover {
-    border: 3px solid var(#fff);
-    color: #fff;
-    background-color: var(--button-secondary-color);
+    color: var(--main-accent-color);
+    background-color: #fff;
+    border-color: var(--main-accent-color);
 }
 
 main .form .button-wrapper button[disabled] {
