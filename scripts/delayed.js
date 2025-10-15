@@ -12,18 +12,32 @@ import {
 
 // Adobe Target - start
 
+// Check if we're in a development environment or authoring mode
+const isDevelopment = window.location.hostname.includes('localhost') || 
+                     window.location.hostname.includes('127.0.0.1') ||
+                     window.location.hostname.includes('adobeaemcloud.com') ||
+                     window.location.hostname.includes('aem.live') ||
+                     window.location.search.includes('vz_proxy_type') ||
+                     window.location.search.includes('vz_admin=1');
+
 window.targetGlobalSettings = {
   bodyHidingEnabled: false,
+  enabled: !isDevelopment, // Only enable in production
 };
 
 function loadAT() {
+  // Only load Target if not in development mode
+  if (isDevelopment) {
+    console.log('Adobe Target disabled for development/authoring environment');
+    return;
+  }
+  
   function targetPageParams() {
     return {
       "at_property": "549d426b-0bcc-be60-ce27-b9923bfcad4f"
     };
   }
-    loadScript(window.hlx.codeBasePath+'/scripts/at-lsig.js');
-  
+  loadScript(window.hlx.codeBasePath+'/scripts/at-lsig.js');
 }
 // Adobe Target - end
 
