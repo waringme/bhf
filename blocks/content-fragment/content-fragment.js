@@ -34,7 +34,7 @@ export default async function decorate(block) {
 	//let variationname = properties.variation ? properties.variation : 'master';
 	
 	const variationname = block.querySelector(':scope div:nth-child(2) > div')?.textContent?.trim()?.toLowerCase()?.replace(' ', '_') || 'master';
-	const displayStyle = block.querySelector(':scope div:nth-child(3) > div')?.textContent?.trim() || '';
+	const displayStyle = block.querySelector(':scope div:nth-child(3) > div')?.textContent?.trim() || 'default-cf-overlay';
 	const alignment = block.querySelector(':scope div:nth-child(4) > div')?.textContent?.trim() || '';
   const textColor = block.querySelector(':scope div:nth-child(5) > div')?.textContent?.trim() || '';
   const ctaStyle = block.querySelector(':scope div:nth-child(6) > div')?.textContent?.trim() || 'button';
