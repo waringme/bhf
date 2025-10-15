@@ -51,7 +51,7 @@
     --form-wizard-border: 0;
     --form-wizard-background-color: var(--background-color-primary);
     --form-wizard-border-color: #757575;
-    --form-wizard-number-color: var(--button-primary-color);
+    --form-wizard-number-color: var(--main-accent-color);
     --form-wizard-padding: 0px;
     --form-wizard-padding-bottom: 160px;
     --form-wizard-step-legend-padding: 10px;
@@ -591,7 +591,7 @@ main .form form .wizard .wizard-menu-item::before {
   height: 35px;
   margin-right: 10px;
   text-align: center;
-  line-height: 2;
+  line-height: 1.6;
   display: inline-block;
 }
 
