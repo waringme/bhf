@@ -11,8 +11,20 @@ import {
 } from './utils.js';
 
 // Adobe Target - start
-// Target is now loaded from head.html CDN
-// Removed local Target configuration to avoid conflicts
+
+window.targetGlobalSettings = {
+  bodyHidingEnabled: false,
+};
+
+function loadAT() {
+  function targetPageParams() {
+    return {
+      "at_property": "549d426b-0bcc-be60-ce27-b9923bfcad4f"
+    };
+  }
+    loadScript(window.hlx.codeBasePath+'/scripts/at-lsig.js');
+  
+}
 // Adobe Target - end
 
 
@@ -90,6 +102,7 @@ function buildTwitterLinks() {
 if (!window.location.hostname.includes('localhost')) {
   
   embedCustomLibraries();
-  // Target is now loaded from head.html CDN
-  // Removed loadAT() call to avoid conflicts
+  if (!(window.location.href.indexOf('/canvas/') > -1)) {
+    loadAT();
+  }
 }
