@@ -282,7 +282,7 @@
   z-index: 2;
   margin-bottom: 50%;
 }
-.default-no-overlay p.cftitle {
+.default-no-overlay p.cftitle, .default-no-overlay p.cfsubtitle, .default-no-overlay .cfdescription {
   width: 58%;
 }
 /* Common styles for all image layouts */
