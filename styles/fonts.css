@@ -4710,5 +4710,5 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('data:font/woff2;base64,') format('woff2');
+  src: url('../fonts/BHFBeats-Bold.woff') format('woff');
 }
