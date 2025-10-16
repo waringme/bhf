@@ -511,3 +511,13 @@
 .content-fragment-wrapper .content-fragment .banner-content .banner-detail.text-right .cftitle::after {
   margin-right: 0;
 }
+
+/* LCP Optimization Styles */
+.content-fragment-wrapper .content-fragment .banner-detail.lcp-optimized {
+  will-change: background-image;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+.content-fragment-wrapper .content-fragment .banner-detail[data-fetchpriority="high"] {
+  contain: layout style paint;
+}

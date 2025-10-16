@@ -18,6 +18,7 @@ import {
   toCamelCase
 } from './aem.js';
 import { picture, source, img } from './dom-helpers.js';
+import { initLCPOptimization } from './lcp-optimization.js';
 
 import {
   getLanguage,
@@ -220,6 +221,10 @@ async function loadEager(doc) {
   setPageLanguage();
   decorateTemplateAndTheme();
   renderWBDataLayer();
+  
+  // Initialize LCP optimization early
+  initLCPOptimization();
+  
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
