@@ -411,6 +411,10 @@ h1 {
   font-family: "BHF Beats Bold", Trebuchet MS, Trebuchet, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 }
 
+.content-fragment-wrapper .content-fragment .banner-content .banner-detail .cftitle {
+  font-family: "BHF Beats Bold", Trebuchet MS, Trebuchet, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
 h2 {
   font-size: var(--heading-font-size-xl);
 }

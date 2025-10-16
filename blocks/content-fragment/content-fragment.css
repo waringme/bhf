@@ -92,7 +92,9 @@
   margin: 0;
   font-size: 30px;
   line-height: 50px;
-  font-family: var(--black-font-family);
+  font-family: "BHF Beats Bold", Trebuchet MS, Trebuchet, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-size: 3.375rem;
+  line-height: 3.5rem;
 }
 .content-fragment-wrapper .content-fragment .banner-content .banner-detail .cftitle::after {
   background-color: var(--main-accent-color);
@@ -280,7 +282,9 @@
   z-index: 2;
   margin-bottom: 50%;
 }
-
+.default-no-overlay p.cftitle {
+  width: 58%;
+}
 /* Common styles for all image layouts */
 .content-fragment-wrapper .content-fragment .banner-content.image-left .banner-detail .cftitle,
 .content-fragment-wrapper .content-fragment .banner-content.image-right .banner-detail .cftitle,
@@ -352,7 +356,9 @@
 
   .content-fragment-container .content-fragment-wrapper .content-fragment .banner-content .banner-detail .cftitle {
     font-size: 25px;
-    font-family: var(--heading-font-family);
+    font-family: "BHF Beats Bold", Trebuchet MS, Trebuchet, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-size: 3.375rem;
+    line-height: 3.5rem;
   }
   .content-fragment-container .content-fragment-wrapper .content-fragment .banner-content .banner-detail .cfsubtitle {
     font-size: 20px;

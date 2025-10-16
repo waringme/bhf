@@ -573,6 +573,10 @@
           {
             "name": "Image Bottom",
             "value": "image-bottom"
+          },
+          {
+            "name": "Default No Overlay",
+            "value": "default-no-overlay"
           }
         ]
       },
