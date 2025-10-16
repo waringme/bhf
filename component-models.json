@@ -45,7 +45,8 @@
         "valueType": "string",
         "name": "hostname",
         "label": "Hostname",
-        "description": "Provide the hostname of author instance (without the ending slash) e.g. https://author-pXXXXX-eXXXXXXX.adobeaemcloud.com"
+        "description": "Provide the hostname of author instance (without the ending slash) e.g. https://author-pXXXXX-eXXXXXXX.adobeaemcloud.com",
+        "value": "https://author-p162352-e1740873.adobeaemcloud.com"
       },
       {
         "component": "text",
