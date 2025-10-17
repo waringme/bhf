@@ -317,13 +317,11 @@ body.appear {
 
 /* Hide content fragments until Target personalization is complete */
 body:not(.target-ready) .content-fragment {
-  visibility: hidden;
+  display: none;
 }
 
 body.target-ready .content-fragment {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.2s ease-in-out;
+  display: block;
 }
 body.gray-theme {
   filter: grayscale(100%);

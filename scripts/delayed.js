@@ -29,7 +29,7 @@ function loadAT() {
     setTimeout(() => {
       document.body.classList.add('target-ready');
       console.log('Target ready - content fragments now visible');
-    }, 100);
+    }, 50);
   }
   
   // Check if Target is already loaded
