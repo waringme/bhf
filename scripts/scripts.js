@@ -18,7 +18,7 @@ import {
   toCamelCase
 } from './aem.js';
 import { picture, source, img } from './dom-helpers.js';
-import { initLCPOptimization } from './lcp-optimization.js';
+// import { initLCPOptimization } from './lcp-optimization.js';
 
 import {
   getLanguage,
@@ -222,11 +222,6 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   renderWBDataLayer();
   
-  // Initialize LCP optimization after Target has had time to initialize
-  // Small delay to prevent interference with Target's DOM manipulation
-  setTimeout(() => {
-    initLCPOptimization();
-  }, 100);
   
   const main = doc.querySelector('main');
   if (main) {
