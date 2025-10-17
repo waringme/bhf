@@ -222,18 +222,19 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   renderWBDataLayer();
   
-  // Initialize LCP optimization after Target has had time to process
+  // Initialize LCP optimization after Target has had time to initialize
+  // Small delay to prevent interference with Target's DOM manipulation
   setTimeout(() => {
     initLCPOptimization();
-  }, 150);
+  }, 100);
   
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
-    // Small delay to ensure Target has processed before showing the page
+    // Delay adding 'appear' class to allow Target to initialize first
     setTimeout(() => {
       document.body.classList.add('appear');
-    }, 100);
+    }, 50);
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
 
