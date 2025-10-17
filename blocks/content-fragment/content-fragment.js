@@ -158,10 +158,10 @@ export default async function decorate(block) {
           <div class='banner-logo'></div>
         </div>`;
         
-        // Apply LCP optimization after rendering
-        if (window.lcpOptimizer) {
-          window.lcpOptimizer.optimizeContentFragment(block);
-        }
+		// Apply LCP optimization after rendering
+		if (window.lcpOptimizer) {
+			window.lcpOptimizer.optimizeContentFragment(block);
+		}
         
     
       } catch (error) {
