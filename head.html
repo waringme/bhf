@@ -3,20 +3,6 @@
 window.targetGlobalSettings = {
   bodyHidingEnabled: true,
 };
-
-// Immediate Target ready detection to prevent flicker
-(function() {
-  function checkTargetReady() {
-    if (window.adobe && window.adobe.target) {
-      document.body.classList.add('target-ready');
-    } else {
-      setTimeout(checkTargetReady, 10);
-    }
-  }
-  
-  // Start checking immediately
-  checkTargetReady();
-})();
 </script>
 <script src="https://publish-p162352-e1740873.adobeaemcloud.com/content/dam/bhf/en/at.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>

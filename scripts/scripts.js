@@ -232,27 +232,10 @@ async function loadEager(doc) {
   if (main) {
     decorateMain(main);
     
-    // Wait for Target to be ready before showing page to prevent flicker
-    let attempts = 0;
-    const maxAttempts = 80; // 2 seconds max (80 * 25ms)
-    
-    function showPageWhenTargetReady() {
-      attempts++;
-      
-      if (document.body.classList.contains('target-ready')) {
-        document.body.classList.add('appear');
-      } else if (attempts < maxAttempts) {
-        // Check again in 25ms for faster response
-        setTimeout(showPageWhenTargetReady, 25);
-      } else {
-        // Fallback - show page anyway to prevent permanent hiding
-        document.body.classList.add('appear');
-        console.warn('Target ready timeout - showing page anyway');
-      }
-    }
-    
-    // Start checking for Target readiness immediately
-    showPageWhenTargetReady();
+    // Simple delay to allow Target to initialize first
+    setTimeout(() => {
+      document.body.classList.add('appear');
+    }, 100);
     
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
