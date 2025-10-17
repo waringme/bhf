@@ -315,14 +315,7 @@ body.appear {
   overflow-x: hidden;
 }
 
-/* Hide content fragments until Target personalization is complete */
-body:not(.target-ready) .content-fragment {
-  visibility: hidden;
-}
-
-body.target-ready .content-fragment {
-  visibility: visible;
-}
+/* Hide content fragments until Target personalization is complete - REMOVED to match skydotcom */
 body.gray-theme {
   filter: grayscale(100%);
 }
