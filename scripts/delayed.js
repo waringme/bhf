@@ -23,13 +23,10 @@ function loadAT() {
     };
   }
   
-  // Add target-ready class when Target is loaded and has processed
+  // Add target-ready class when Target is loaded
   function markTargetReady() {
-    // Small delay to ensure Target has fully processed personalization
-    setTimeout(() => {
-      document.body.classList.add('target-ready');
-      console.log('Target ready - content fragments now visible');
-    }, 50);
+    document.body.classList.add('target-ready');
+    console.log('Target ready - content fragments now visible');
   }
   
   // Check if Target is already loaded
@@ -48,7 +45,7 @@ function loadAT() {
     setTimeout(() => {
       clearInterval(checkTarget);
       markTargetReady();
-    }, 2000);
+    }, 1000);
   }
   
   loadScript(window.hlx.codeBasePath+'/scripts/at-lsig.js');
