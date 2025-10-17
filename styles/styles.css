@@ -322,6 +322,8 @@ body:not(.target-ready) .content-fragment {
 
 body.target-ready .content-fragment {
   visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
 }
 body.gray-theme {
   filter: grayscale(100%);

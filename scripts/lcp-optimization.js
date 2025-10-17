@@ -94,6 +94,11 @@ export class LCPOptimizer {
     // Monitor for dynamically added content fragments
     observeContentFragments() {
         const observer = new MutationObserver((mutations) => {
+            // Skip if Target is not ready to prevent interference
+            if (!document.body.classList.contains('target-ready')) {
+                return;
+            }
+            
             mutations.forEach((mutation) => {
                 mutation.addedNodes.forEach((node) => {
                     if (node.nodeType === Node.ELEMENT_NODE) {

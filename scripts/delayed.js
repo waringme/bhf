@@ -23,9 +23,13 @@ function loadAT() {
     };
   }
   
-  // Add target-ready class when Target is loaded
+  // Add target-ready class when Target is loaded and has processed
   function markTargetReady() {
-    document.body.classList.add('target-ready');
+    // Small delay to ensure Target has fully processed personalization
+    setTimeout(() => {
+      document.body.classList.add('target-ready');
+      console.log('Target ready - content fragments now visible');
+    }, 100);
   }
   
   // Check if Target is already loaded
