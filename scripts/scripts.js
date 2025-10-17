@@ -231,7 +231,10 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
-    document.body.classList.add('appear');
+    // Delay adding 'appear' class to allow Target to initialize first
+    setTimeout(() => {
+      document.body.classList.add('appear');
+    }, 50);
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
 
