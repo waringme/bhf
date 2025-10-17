@@ -13,7 +13,7 @@ import {
 // Adobe Target - start
 
 window.targetGlobalSettings = {
-  bodyHidingEnabled: true,
+  bodyHidingEnabled: false,
 };
 
 function loadAT() {
@@ -23,30 +23,6 @@ function loadAT() {
     };
   }
   
-  // Add target-ready class when Target is loaded
-  function markTargetReady() {
-    document.body.classList.add('target-ready');
-    console.log('Target ready - content fragments now visible');
-  }
-  
-  // Check if Target is already loaded
-  if (window.adobe && window.adobe.target) {
-    markTargetReady();
-  } else {
-    // Wait for Target to load
-    const checkTarget = setInterval(() => {
-      if (window.adobe && window.adobe.target) {
-        clearInterval(checkTarget);
-        markTargetReady();
-      }
-    }, 50);
-    
-    // Fallback timeout
-    setTimeout(() => {
-      clearInterval(checkTarget);
-      markTargetReady();
-    }, 1000);
-  }
   
   loadScript(window.hlx.codeBasePath+'/scripts/at-lsig.js');
 }

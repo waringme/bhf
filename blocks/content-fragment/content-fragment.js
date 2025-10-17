@@ -158,8 +158,8 @@ export default async function decorate(block) {
           <div class='banner-logo'></div>
         </div>`;
         
-        // Apply LCP optimization after rendering, but only when Target is ready
-        if (window.lcpOptimizer && document.body.classList.contains('target-ready')) {
+        // Apply LCP optimization after rendering
+        if (window.lcpOptimizer) {
           window.lcpOptimizer.optimizeContentFragment(block);
         }
         
