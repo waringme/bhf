@@ -13,7 +13,7 @@ import {
 // Adobe Target - start
 
 window.targetGlobalSettings = {
-  bodyHidingEnabled: false,
+  bodyHidingEnabled: true,
 };
 
 function loadAT() {
@@ -22,8 +22,32 @@ function loadAT() {
       "at_property": "549d426b-0bcc-be60-ce27-b9923bfcad4f"
     };
   }
-    loadScript(window.hlx.codeBasePath+'/scripts/at-lsig.js');
   
+  // Add target-ready class when Target is loaded
+  function markTargetReady() {
+    document.body.classList.add('target-ready');
+  }
+  
+  // Check if Target is already loaded
+  if (window.adobe && window.adobe.target) {
+    markTargetReady();
+  } else {
+    // Wait for Target to load
+    const checkTarget = setInterval(() => {
+      if (window.adobe && window.adobe.target) {
+        clearInterval(checkTarget);
+        markTargetReady();
+      }
+    }, 50);
+    
+    // Fallback timeout
+    setTimeout(() => {
+      clearInterval(checkTarget);
+      markTargetReady();
+    }, 2000);
+  }
+  
+  loadScript(window.hlx.codeBasePath+'/scripts/at-lsig.js');
 }
 // Adobe Target - end
 

@@ -314,6 +314,15 @@ body.appear {
   display: block;
   overflow-x: hidden;
 }
+
+/* Hide content fragments until Target personalization is complete */
+body:not(.target-ready) .content-fragment {
+  visibility: hidden;
+}
+
+body.target-ready .content-fragment {
+  visibility: visible;
+}
 body.gray-theme {
   filter: grayscale(100%);
 }
