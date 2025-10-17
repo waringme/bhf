@@ -1,7 +1,7 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { isAuthorEnvironment, moveInstrumentation } from '../../scripts/scripts.js';
 import { readBlockConfig } from '../../scripts/aem.js';
-import { LCPOptimizer } from '../../scripts/lcp-optimization.js';
+// import { LCPOptimizer } from '../../scripts/lcp-optimization.js';
 
 /**
  *
@@ -158,10 +158,10 @@ export default async function decorate(block) {
           <div class='banner-logo'></div>
         </div>`;
         
-        // Apply LCP optimization after rendering
-        if (window.lcpOptimizer) {
-          window.lcpOptimizer.optimizeContentFragment(block);
-        }
+		// Apply LCP optimization after rendering
+		// if (window.lcpOptimizer) {
+		// 	window.lcpOptimizer.optimizeContentFragment(block);
+		// }
         
     
       } catch (error) {
