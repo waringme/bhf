@@ -160,3 +160,4 @@ export function initLCPOptimization() {
     
     return lcpOptimizer;
 }
+
