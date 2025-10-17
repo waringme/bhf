@@ -512,14 +512,12 @@
   margin-right: 0;
 }
 
-/* LCP Optimization Styles - COMMENTED OUT TO MATCH SKYDOTCOM APPROACH */
-/*
+/* LCP Optimization Styles */
 .content-fragment-wrapper .content-fragment .banner-detail.lcp-optimized {
   will-change: background-image;
-  transform: translateZ(0); 
+  transform: translateZ(0); /* Force hardware acceleration */
 }
 
 .content-fragment-wrapper .content-fragment .banner-detail[data-fetchpriority="high"] {
   contain: layout style paint;
 }
-*/

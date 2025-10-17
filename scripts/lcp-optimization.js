@@ -1,5 +1,4 @@
-// LCP Optimization for Content Fragment Images - COMMENTED OUT TO MATCH SKYDOTCOM APPROACH
-/*
+// LCP Optimization for Content Fragment Images
 export class LCPOptimizer {
     constructor() {
         this.criticalImages = new Set();
@@ -166,5 +165,4 @@ export function initLCPOptimization() {
     
     return lcpOptimizer;
 }
-*/
 
