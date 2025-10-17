@@ -50,11 +50,6 @@ export class LCPOptimizer {
         const bannerDetail = block.querySelector('.banner-detail');
         if (!bannerDetail) return;
 
-        // Skip optimization if element is already visible to prevent flicker
-        if (document.body.classList.contains('appear')) {
-            return;
-        }
-
         const backgroundImage = bannerDetail.style.backgroundImage;
         const imageUrl = this.extractImageUrl(backgroundImage);
         
@@ -99,11 +94,6 @@ export class LCPOptimizer {
     // Monitor for dynamically added content fragments
     observeContentFragments() {
         const observer = new MutationObserver((mutations) => {
-            // Skip if page is already visible to prevent flicker
-            if (document.body.classList.contains('appear')) {
-                return;
-            }
-            
             mutations.forEach((mutation) => {
                 mutation.addedNodes.forEach((node) => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
