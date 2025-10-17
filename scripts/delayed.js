@@ -13,7 +13,7 @@ import {
 // Adobe Target - start
 
 window.targetGlobalSettings = {
-  bodyHidingEnabled: true,
+  bodyHidingEnabled: false,
 };
 
 function loadAT() {
