@@ -46,103 +46,46 @@
       "properties": {
         "title": {
           "type": "string",
-          "description": "Title (Mr, Mrs, Miss, Ms, Dr, etc.)",
-          "enum": [
-            "Mr",
-            "Mrs",
-            "Miss",
-            "Ms",
-            "Dr",
-            "Prof",
-            "Other"
-          ]
-        },
+          "description": "Title (Mr, Mrs, Miss, Ms, Dr, etc.)"
+          },
         "name": {
           "type": "string",
-          "description": "Full name",
-          "minLength": 2,
-          "maxLength": 100
+          "description": "Full name"
         },
         "companyName": {
           "type": "string",
-          "description": "Company name",
-          "minLength": 2,
-          "maxLength": 100
+          "description": "Company name"
         },
         "businessPostcode": {
           "type": "string",
-          "description": "Business postcode",
-          "pattern": "^[A-Z]{1,2}[0-9][A-Z0-9]? ?[0-9][A-Z]{2}$"
+          "description": "Business postcode"
         },
         "contactNumber": {
           "type": "string",
-          "description": "Contact telephone number",
-          "pattern": "^(\\+44\\s?7\\d{3}|\\(?07\\d{3}\\)?)\\s?\\d{3}\\s?\\d{3}$|^(\\+44\\s?[1-9]\\d{2,3}|\\(?0[1-9]\\d{2,3}\\)?)\\s?\\d{3}\\s?\\d{3,4}$"
-        },
+          "description": "Contact telephone number"},
         "email": {
           "type": "string",
-          "description": "Email address",
-          "format": "email",
-          "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+          "description": "Email address"
         },
         "businessSector": {
           "type": "string",
-          "description": "Business sector/industry",
-          "enum": [
-            "Retail",
-            "Hospitality",
-            "Construction",
-            "Manufacturing",
-            "Technology",
-            "Professional Services",
-            "Healthcare",
-            "Education",
-            "Transport",
-            "Agriculture",
-            "Real Estate",
-            "Financial Services",
-            "Other"
-          ]
+          "description": "Business sector/industry"
         },
         "currentCustomer": {
           "type": "string",
-          "description": "Are you a current customer? (Yes/No)",
-          "enum": [
-            "Yes",
-            "No"
-          ]
+          "description": "Are you a current customer? (Yes/No)"
         },
         "purposeOfEnquiry": {
           "type": "string",
-          "description": "Purpose of enquiry",
-          "enum": [
-            "New Business Account",
-            "Business Loan",
-            "Overdraft",
-            "Business Credit Card",
-            "Merchant Services",
-            "Business Insurance",
-            "Investment Services",
-            "Other"
-          ]
+          "description": "Purpose of enquiry"
         },
         "lendingRequirements12Months": {
           "type": "string",
-          "description": "Lending requirements over next 12 months (GBP)",
-          "pattern": "^[0-9]+(\\.[0-9]{1,2})?$"
+          "description": "Lending requirements over next 12 months (GBP)"
         },
         "additionalServices": {
           "type": "array",
-          "description": "Additional services required (select all that apply)",
-          "items": {
-            "type": "string",
-            "enum": [
-              "Take payments face to face, online or over the phone",
-              "Savings accounts",
-              "Accounting Software",
-              "Business Insurance"
-            ]
-          }
+          "description": "Additional services required (select all that apply)"
         }
       }
     }
