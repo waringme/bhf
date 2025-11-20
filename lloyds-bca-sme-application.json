@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Business Current Account Application API for SME",
+    "description": "Business Banking Enquiry Form API for SME",
     "version": "1.0",
-    "title": "BCA SME Application API"
+    "title": "SME Business Banking Enquiry API"
   },
   "host": "author-p147324-e1509924.adobeaemcloud.com",
   "schemes": [
@@ -12,9 +12,9 @@
   "paths": {
     "/bin/business-account.json": {
       "post": {
-        "summary": "Submit Business Current Account Application",
-        "description": "Creates a new business current account application for SME",
-        "operationId": "submitBusinessAccountApplication",
+        "summary": "Submit Business Banking Enquiry",
+        "description": "Submit a business banking enquiry form",
+        "operationId": "submitBusinessEnquiry",
         "consumes": [
           "application/json"
         ],
@@ -24,11 +24,11 @@
         "parameters": [
           {
             "in": "body",
-            "name": "application",
-            "description": "Business account application data",
+            "name": "enquiry",
+            "description": "Business enquiry data",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/BusinessAccountApplication"
+              "$ref": "#/definitions/BusinessEnquiry"
             }
           }
         ],
@@ -36,15 +36,15 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ApplicationResponse"
+              "$ref": "#/definitions/EnquiryResponse"
             }
           }
         }
       },
       "get": {
-        "summary": "Get application status",
-        "description": "Retrieves the status of a business account application",
-        "operationId": "getApplicationStatus",
+        "summary": "Get enquiry status",
+        "description": "Retrieves the status of a business banking enquiry",
+        "operationId": "getEnquiryStatus",
         "consumes": [
           "application/json"
         ],
@@ -54,8 +54,8 @@
         "parameters": [
           {
             "in": "query",
-            "name": "applicationId",
-            "description": "Application ID",
+            "name": "referenceNumber",
+            "description": "Enquiry reference number",
             "required": true,
             "type": "string"
           }
@@ -64,17 +64,17 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ApplicationStatusResponse"
+              "$ref": "#/definitions/EnquiryStatusResponse"
             }
           }
         }
       }
     },
-    "/bin/validate-application.json": {
+    "/bin/validate-enquiry.json": {
       "post": {
-        "summary": "Validate application data",
-        "description": "Validates business account application data before submission",
-        "operationId": "validateApplication",
+        "summary": "Validate enquiry data",
+        "description": "Validates business enquiry data before submission",
+        "operationId": "validateEnquiry",
         "consumes": [
           "application/json"
         ],
@@ -84,11 +84,11 @@
         "parameters": [
           {
             "in": "body",
-            "name": "application",
-            "description": "Application data to validate",
+            "name": "enquiry",
+            "description": "Enquiry data to validate",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/BusinessAccountApplication"
+              "$ref": "#/definitions/BusinessEnquiry"
             }
           }
         ],
@@ -164,281 +164,131 @@
     }
   },
   "definitions": {
-    "BusinessAccountApplication": {
+    "BusinessEnquiry": {
       "type": "object",
       "properties": {
-        "applicationId": {
+        "title": {
           "type": "string",
-          "description": "Unique application identifier"
+          "description": "Title (Mr, Mrs, Miss, Ms, Dr, etc.)",
+          "enum": [
+            "Mr",
+            "Mrs",
+            "Miss",
+            "Ms",
+            "Dr",
+            "Prof",
+            "Other"
+          ]
         },
-        "businessName": {
+        "name": {
           "type": "string",
-          "description": "Legal business name"
+          "description": "Full name",
+          "minLength": 2,
+          "maxLength": 100
         },
-        "tradingName": {
+        "companyName": {
           "type": "string",
-          "description": "Trading name (if different)"
+          "description": "Company name",
+          "minLength": 2,
+          "maxLength": 100
         },
-        "businessType": {
+        "businessPostcode": {
           "type": "string",
-          "description": "Type of business entity (sole_trader, partnership, limited_company, etc.)"
+          "description": "Business postcode",
+          "pattern": "^[A-Z]{1,2}[0-9][A-Z0-9]? ?[0-9][A-Z]{2}$"
         },
-        "registrationNumber": {
+        "contactNumber": {
           "type": "string",
-          "description": "Company registration number (Companies House)"
+          "description": "Contact telephone number",
+          "pattern": "^(\\+44\\s?7\\d{3}|\\(?07\\d{3}\\)?)\\s?\\d{3}\\s?\\d{3}$|^(\\+44\\s?[1-9]\\d{2,3}|\\(?0[1-9]\\d{2,3}\\)?)\\s?\\d{3}\\s?\\d{3,4}$"
         },
-        "dateOfIncorporation": {
+        "email": {
           "type": "string",
-          "description": "Date of business incorporation/registration"
+          "description": "Email address",
+          "format": "email",
+          "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
         },
-        "vatRegistered": {
+        "businessSector": {
           "type": "string",
-          "description": "Is the business VAT registered (true/false)"
+          "description": "Business sector/industry",
+          "enum": [
+            "Retail",
+            "Hospitality",
+            "Construction",
+            "Manufacturing",
+            "Technology",
+            "Professional Services",
+            "Healthcare",
+            "Education",
+            "Transport",
+            "Agriculture",
+            "Real Estate",
+            "Financial Services",
+            "Other"
+          ]
         },
-        "vatNumber": {
+        "currentCustomer": {
           "type": "string",
-          "description": "VAT registration number"
+          "description": "Are you a current customer? (Yes/No)",
+          "enum": [
+            "Yes",
+            "No"
+          ]
         },
-        "addressLine1": {
+        "purposeOfEnquiry": {
           "type": "string",
-          "description": "Business address line 1"
+          "description": "Purpose of enquiry",
+          "enum": [
+            "New Business Account",
+            "Business Loan",
+            "Overdraft",
+            "Business Credit Card",
+            "Merchant Services",
+            "Business Insurance",
+            "Investment Services",
+            "Other"
+          ]
         },
-        "addressLine2": {
+        "lendingRequirements12Months": {
           "type": "string",
-          "description": "Business address line 2"
+          "description": "Lending requirements over next 12 months (GBP)",
+          "pattern": "^[0-9]+(\\.[0-9]{1,2})?$"
         },
-        "city": {
-          "type": "string",
-          "description": "City/Town"
+        "additionalServices": {
+          "type": "array",
+          "description": "Additional services required (select all that apply)",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Take payments face to face, online or over the phone",
+              "Savings accounts",
+              "Accounting Software",
+              "Business Insurance"
+            ]
+          }
         },
-        "county": {
+        "timeToReachYou": {
           "type": "string",
-          "description": "County"
-        },
-        "postcode": {
-          "type": "string",
-          "description": "Postcode"
-        },
-        "country": {
-          "type": "string",
-          "description": "Country code"
-        },
-        "industry": {
-          "type": "string",
-          "description": "Industry sector"
-        },
-        "businessDescription": {
-          "type": "string",
-          "description": "Brief description of business activities"
-        },
-        "numberOfEmployees": {
-          "type": "string",
-          "description": "Number of employees"
-        },
-        "website": {
-          "type": "string",
-          "description": "Business website URL"
-        },
-        "primaryContactName": {
-          "type": "string",
-          "description": "Primary contact person name"
-        },
-        "primaryEmail": {
-          "type": "string",
-          "description": "Primary email address"
-        },
-        "primaryPhone": {
-          "type": "string",
-          "description": "Primary phone number"
-        },
-        "mobilePhone": {
-          "type": "string",
-          "description": "Mobile phone number"
-        },
-        "directorTitle": {
-          "type": "string",
-          "description": "Director title (Mr, Mrs, Miss, Ms, Dr, etc.)"
-        },
-        "directorFirstName": {
-          "type": "string",
-          "description": "Director first name"
-        },
-        "directorLastName": {
-          "type": "string",
-          "description": "Director last name"
-        },
-        "directorDateOfBirth": {
-          "type": "string",
-          "description": "Director date of birth"
-        },
-        "directorNationality": {
-          "type": "string",
-          "description": "Director nationality"
-        },
-        "directorNationalInsuranceNumber": {
-          "type": "string",
-          "description": "Director National Insurance Number"
-        },
-        "directorAddressLine1": {
-          "type": "string",
-          "description": "Director residential address line 1"
-        },
-        "directorAddressLine2": {
-          "type": "string",
-          "description": "Director residential address line 2"
-        },
-        "directorCity": {
-          "type": "string",
-          "description": "Director city"
-        },
-        "directorCounty": {
-          "type": "string",
-          "description": "Director county"
-        },
-        "directorPostcode": {
-          "type": "string",
-          "description": "Director postcode"
-        },
-        "directorEmail": {
-          "type": "string",
-          "description": "Director email address"
-        },
-        "directorPhone": {
-          "type": "string",
-          "description": "Director phone number"
-        },
-        "directorOwnership": {
-          "type": "string",
-          "description": "Percentage ownership in business"
-        },
-        "politicallyExposed": {
-          "type": "string",
-          "description": "Is director a Politically Exposed Person (true/false)"
-        },
-        "accountType": {
-          "type": "string",
-          "description": "Type of business account"
-        },
-        "branchSortCode": {
-          "type": "string",
-          "description": "Preferred branch sort code"
-        },
-        "overdraftRequired": {
-          "type": "string",
-          "description": "Is an overdraft facility required (true/false)"
-        },
-        "overdraftAmount": {
-          "type": "string",
-          "description": "Overdraft amount requested (GBP)"
-        },
-        "debitCardRequired": {
-          "type": "string",
-          "description": "Business debit card required (true/false)"
-        },
-        "numberOfCards": {
-          "type": "string",
-          "description": "Number of debit cards needed"
-        },
-        "onlineBankingRequired": {
-          "type": "string",
-          "description": "Online banking access required (true/false)"
-        },
-        "mobileBankingRequired": {
-          "type": "string",
-          "description": "Mobile banking access required (true/false)"
-        },
-        "chequeBookRequired": {
-          "type": "string",
-          "description": "Cheque book required (true/false)"
-        },
-        "annualTurnover": {
-          "type": "string",
-          "description": "Expected annual turnover (GBP)"
-        },
-        "projectedTurnover": {
-          "type": "string",
-          "description": "Projected turnover for next year (GBP)"
-        },
-        "sourceOfFunds": {
-          "type": "string",
-          "description": "Primary source of business funds"
-        },
-        "monthlyCredits": {
-          "type": "string",
-          "description": "Expected number of monthly credits"
-        },
-        "monthlyDebits": {
-          "type": "string",
-          "description": "Expected number of monthly debits"
-        },
-        "monthlyTransactions": {
-          "type": "string",
-          "description": "Total expected monthly transactions"
-        },
-        "cashDeposits": {
-          "type": "string",
-          "description": "Will you be making cash deposits (true/false)"
-        },
-        "internationalPayments": {
-          "type": "string",
-          "description": "Will you make international payments (true/false)"
-        },
-        "termsAccepted": {
-          "type": "string",
-          "description": "Terms and conditions accepted (true/false)"
-        },
-        "informationAccurate": {
-          "type": "string",
-          "description": "Declaration that information provided is accurate (true/false)"
-        },
-        "authorizedToApply": {
-          "type": "string",
-          "description": "Authorized to apply on behalf of business (true/false)"
-        },
-        "creditCheckConsent": {
-          "type": "string",
-          "description": "Consent to credit checks (true/false)"
-        },
-        "signatureName": {
-          "type": "string",
-          "description": "Full name of person signing"
-        },
-        "signatureDate": {
-          "type": "string",
-          "description": "Date of signature"
-        },
-        "emailMarketing": {
-          "type": "string",
-          "description": "Consent to email marketing (true/false)"
-        },
-        "smsMarketing": {
-          "type": "string",
-          "description": "Consent to SMS marketing (true/false)"
-        },
-        "phoneMarketing": {
-          "type": "string",
-          "description": "Consent to phone marketing (true/false)"
+          "description": "Best time to reach you",
+          "enum": [
+            "Morning (9am-12pm)",
+            "Afternoon (12pm-5pm)",
+            "Evening (5pm-8pm)",
+            "Anytime"
+          ]
         }
       }
     },
-    "ApplicationResponse": {
+    "EnquiryResponse": {
       "type": "object",
       "properties": {
         "success": {
           "type": "string",
-          "description": "Application submission success (true/false)"
-        },
-        "applicationId": {
-          "type": "string",
-          "description": "Unique application ID"
+          "description": "Submission success (true/false)"
         },
         "referenceNumber": {
           "type": "string",
-          "description": "Application reference number"
-        },
-        "status": {
-          "type": "string",
-          "description": "Application status"
+          "description": "Enquiry reference number"
         },
         "message": {
           "type": "string",
@@ -446,36 +296,28 @@
         },
         "submissionDate": {
           "type": "string",
-          "description": "Submission timestamp"
+          "description": "Submission date"
         }
       }
     },
-    "ApplicationStatusResponse": {
+    "EnquiryStatusResponse": {
       "type": "object",
       "properties": {
-        "applicationId": {
+        "referenceNumber": {
           "type": "string",
-          "description": "Application ID"
+          "description": "Enquiry reference number"
         },
         "status": {
           "type": "string",
-          "description": "Current status (submitted, under_review, approved, declined)"
+          "description": "Current status"
         },
         "statusMessage": {
           "type": "string",
-          "description": "Current status message"
+          "description": "Status message"
         },
         "lastUpdated": {
           "type": "string",
-          "description": "Last update timestamp"
-        },
-        "accountNumber": {
-          "type": "string",
-          "description": "Account number (if approved)"
-        },
-        "sortCode": {
-          "type": "string",
-          "description": "Sort code (if approved)"
+          "description": "Last update date"
         }
       }
     },
@@ -484,23 +326,11 @@
       "properties": {
         "valid": {
           "type": "string",
-          "description": "Overall validation result (true/false)"
+          "description": "Validation result (true/false)"
         },
-        "errorCount": {
+        "message": {
           "type": "string",
-          "description": "Number of validation errors"
-        },
-        "errors": {
-          "type": "string",
-          "description": "Comma-separated list of validation errors"
-        },
-        "warningCount": {
-          "type": "string",
-          "description": "Number of validation warnings"
-        },
-        "warnings": {
-          "type": "string",
-          "description": "Comma-separated list of validation warnings"
+          "description": "Validation message"
         }
       }
     },
@@ -515,37 +345,9 @@
           "type": "string",
           "description": "Company name"
         },
-        "companyNumber": {
-          "type": "string",
-          "description": "Company registration number"
-        },
-        "companyStatus": {
-          "type": "string",
-          "description": "Company status"
-        },
-        "incorporationDate": {
-          "type": "string",
-          "description": "Incorporation date"
-        },
-        "companyType": {
-          "type": "string",
-          "description": "Company type"
-        },
-        "addressLine1": {
-          "type": "string",
-          "description": "Registered address line 1"
-        },
-        "addressLine2": {
-          "type": "string",
-          "description": "Registered address line 2"
-        },
-        "city": {
-          "type": "string",
-          "description": "City"
-        },
         "postcode": {
           "type": "string",
-          "description": "Postcode"
+          "description": "Registered postcode"
         }
       }
     },
@@ -556,17 +358,9 @@
           "type": "string",
           "description": "Sort code valid (true/false)"
         },
-        "sortCode": {
+        "message": {
           "type": "string",
-          "description": "Sort code"
-        },
-        "branchName": {
-          "type": "string",
-          "description": "Branch name"
-        },
-        "branchAddress": {
-          "type": "string",
-          "description": "Branch address"
+          "description": "Validation message"
         }
       }
     }
