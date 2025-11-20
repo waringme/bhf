@@ -113,102 +113,97 @@
             }
         }
     },
-    "definitions": {
-        "ContactDetails": {
-            "type": "object",
-            "properties": {
-                "sizeOfBusiness": {
-                    "type": "string",
-                    "description": "Size of business",
-                    "enum": [
-                        "0-3 million",
-                        "\u00a33-25 million",
-                        "I am a school"
-                    ]
-                },
-                "title": {
-                    "type": "string",
-                    "description": "User's title (Mr, Mrs, Dr, etc.)",
-                    "enum": [
-                        "Mr",
-                        "Mrs",
-                        "Miss",
-                        "Ms",
-                        "Dr",
-                        "Prof",
-                        "Rev",
-                        "Sir",
-                        "Lord",
-                        "Lady",
-                        "Other"
-                    ]
-                },
-                "name": {
-                    "type": "string",
-                    "description": "User's name"
-                },
-                "postCode": {
-                    "type": "string",
-                    "description": "Primary address line"
-                },
-                "contactTelephoneNumber": {
-                    "type": "string",
-                    "description": "Contact number"
-                },
-                "emailAddress": {
-                    "type": "string",
-                    "description": "Email address"
-                },
-                "businessName": {
-                    "type": "string",
-                    "description": "Business name"
-                },
-                "businessType": {
-                    "type": "string",
-                    "description": "Business type/industry",
-                    "enum": [
-                        "Retail",
-                        "Hospitality",
-                        "Construction",
-                        "Manufacturing",
-                        "Technology",
-                        "Professional Services",
-                        "Healthcare",
-                        "Education",
-                        "Transport & Logistics",
-                        "Agriculture",
-                        "Real Estate",
-                        "Financial Services",
-                        "Arts & Entertainment",
-                        "Media & Communications",
-                        "Energy & Utilities",
-                        "Charity & Non-Profit",
-                        "Other"
-                    ]
-                }
-            }
-        },
-        "BusinessSize": {
-            "type": "object",
-            "properties": {
-                "sizeCategory": {
-                    "type": "string",
-                    "description": "Business size category",
-                    "enum": [
-                        "0-3 million",
-                        "\u00a33-25 million",
-                        "I am a school"
-                    ]
-                },
-                "turnover": {
-                    "type": "string",
-                    "description": "Annual turnover"
-                },
-                "numberOfEmployees": {
-                    "type": "string",
-                    "description": "Number of employees"
-                }
-            }
-        }
-    }
+     "definitions": {
+         "BusinessSize": {
+             "type": "object",
+             "properties": {
+                 "sizeCategory": {
+                     "type": "string",
+                     "description": "Business size category",
+                     "enum": [
+                         "0-3 million",
+                         "\u00a33-25 million",
+                         "I am a school"
+                     ]
+                 }
+             }
+         },
+         "ContactDetails": {
+             "type": "object",
+             "required": ["name"],
+             "properties": {
+                 "sizeOfBusiness": {
+                     "type": "string",
+                     "description": "Size of business",
+                     "enum": [
+                         "0-3 million",
+                         "\u00a33-25 million",
+                         "I am a school"
+                     ]
+                 },
+                 "title": {
+                     "type": "string",
+                     "description": "User's title (Mr, Mrs, Dr, etc.)",
+                     "enum": [
+                         "Mr",
+                         "Mrs",
+                         "Miss",
+                         "Ms",
+                         "Dr",
+                         "Prof",
+                         "Rev",
+                         "Sir",
+                         "Lord",
+                         "Lady",
+                         "Other"
+                     ]
+                 },
+                 "name": {
+                     "type": "string",
+                     "description": "User's name"
+                 },
+                 "postCode": {
+                     "type": "string",
+                     "description": "Primary address line"
+                 },
+                 "contactTelephoneNumber": {
+                     "type": "string",
+                     "description": "Contact number"
+                 },
+                 "emailAddress": {
+                     "type": "string",
+                     "description": "Email address",
+                     "format": "email",
+                     "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+                 },
+                 "businessName": {
+                     "type": "string",
+                     "description": "Business name"
+                 },
+                 "businessType": {
+                     "type": "string",
+                     "description": "Business type/industry",
+                     "enum": [
+                         "Retail",
+                         "Hospitality",
+                         "Construction",
+                         "Manufacturing",
+                         "Technology",
+                         "Professional Services",
+                         "Healthcare",
+                         "Education",
+                         "Transport & Logistics",
+                         "Agriculture",
+                         "Real Estate",
+                         "Financial Services",
+                         "Arts & Entertainment",
+                         "Media & Communications",
+                         "Energy & Utilities",
+                         "Charity & Non-Profit",
+                         "Other"
+                     ]
+                 }
+             }
+         }
+     }
 }
