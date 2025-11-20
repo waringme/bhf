@@ -1,109 +1,110 @@
 {
   "swagger": "2.0",
   "info": {
-  "description": "Practice User API",
-  "version": "1.0",
-  "title": "Practice User API"
+    "description": "Practice User API",
+    "version": "1.0",
+    "title": "Practice User API"
   },
   "host": "author-p147324-e1846469.adobeaemcloud.com",
   "schemes": [
-  "https"
+    "https"
   ],
   "paths": {
-  "/bin/user.json": {
-  "post": {
-  "summary": "Post user detail",
-  "description": "Post user detail",
-  "operationId": "postUser",
-  "consumes": [
-  "application/json"
-  ],
-  "produces": [
-  "application/json"
-  ],
-  "parameters": [
-  {
-  "in": "body",
-  "name": "userId",
-  "description": "user Id",
-  "required": true,
-  "schema": {
-  "$ref": "#/definitions/User"
-  }
-  }
-  ],
-  "responses": {
-  "200": {
-  "description": "OK",
-  "schema": {
-  "$ref": "#/definitions/User"
-  }
-  }
-  }
+    "/bin/business-account-application.json": {
+      "post": {
+        "summary": "Post user detail",
+        "description": "Post user detail",
+        "operationId": "postUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userId",
+            "description": "user Id",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all users",
+        "description": "Returns list of users",
+        "operationId": "getLeadsByFilterUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    }
   },
-  "get": {
-  "summary": "Get all users",
-  "description": "Returns list of users",
-  "operationId": "getLeadsByFilterUsingGET",
-  "consumes": [
-  "application/json"
-  ],
-  "produces": [
-  "application/json"
-  ],
-  "responses": {
-  "200": {
-  "description": "OK",
-  "schema": {
-  "$ref": "#/definitions/User"
-  }
-  }
-  }
-  }
-  }
-  },
-  "definitions": {
-  "User": {
-  "type": "object",
-  "properties": {
-  "firstName": {
-  "type": "string",
-  "description": "User's first name"
-  },
-  "lastName": {
-  "type": "string",
-  "description": "User's last name"
-  },
-  "title": {
-  "type": "string",
-  "description": "User's title (Mr, Mrs, Dr, etc.)"
-  },
-  "address1": {
-  "type": "string",
-  "description": "Primary address line"
-  },
-  "address2": {
-  "type": "string",
-  "description": "Secondary address line"
-  },
-  "city": {
-  "type": "string",
-  "description": "City name"
-  },
-  "county": {
-  "type": "string",
-  "description": "County or state name"
-  },
-  "postCode": {
-  "type": "string",
-  "description": "Postal/ZIP code"
-  },
-  "balanceAmount": {
-  "type": "string",
-  "description": "Account balance amount"
-  }
-  }
-  }
-  }
-  }
   
+  "definitions": {
+    "ContactDetails": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "User's title (Mr, Mrs, Dr, etc.)"
+        },
+        "name": {
+          "type": "string",
+          "description": "User's name"
+        },
+        "postCode": {
+          "type": "string",
+          "description": "Primary address line"
+        },
+        
+        "balanceAmount": {
+          "type": "string",
+          "description": "Account balance amount"
+        },
+
+"contactTelephoneNumber": {
+          "type": "string",
+          "description": "Contact number"
+        },
+   "emailAddress": {
+          "type": "string",
+          "description": "Email address"
+        },
+        "businessName": {
+          "type": "string",
+          "description": "Business name"
+        },
+        "businessType": {
+          "type": "string",
+          "description": "Business type"
+          }
+      }
+
+      
+  }
+  }
+
+}
