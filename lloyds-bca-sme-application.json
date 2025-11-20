@@ -1,0 +1,575 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Business Current Account Application API for SME",
+    "version": "1.0",
+    "title": "BCA SME Application API"
+  },
+  "host": "author-p147324-e1509924.adobeaemcloud.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/bin/business-account.json": {
+      "post": {
+        "summary": "Submit Business Current Account Application",
+        "description": "Creates a new business current account application for SME",
+        "operationId": "submitBusinessAccountApplication",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "application",
+            "description": "Business account application data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BusinessAccountApplication"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApplicationResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get application status",
+        "description": "Retrieves the status of a business account application",
+        "operationId": "getApplicationStatus",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "applicationId",
+            "description": "Application ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApplicationStatusResponse"
+            }
+          }
+        }
+      }
+    },
+    "/bin/validate-application.json": {
+      "post": {
+        "summary": "Validate application data",
+        "description": "Validates business account application data before submission",
+        "operationId": "validateApplication",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "application",
+            "description": "Application data to validate",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BusinessAccountApplication"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ValidationResponse"
+            }
+          }
+        }
+      }
+    },
+    "/bin/lookup-company.json": {
+      "get": {
+        "summary": "Lookup company details",
+        "description": "Retrieves company information from Companies House",
+        "operationId": "lookupCompany",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "registrationNumber",
+            "description": "Company registration number",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CompanyLookupResponse"
+            }
+          }
+        }
+      }
+    },
+    "/bin/validate-sortcode.json": {
+      "get": {
+        "summary": "Validate sort code",
+        "description": "Validates UK bank sort code",
+        "operationId": "validateSortCode",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "sortCode",
+            "description": "6-digit sort code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SortCodeResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BusinessAccountApplication": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "description": "Unique application identifier"
+        },
+        "businessName": {
+          "type": "string",
+          "description": "Legal business name"
+        },
+        "tradingName": {
+          "type": "string",
+          "description": "Trading name (if different)"
+        },
+        "businessType": {
+          "type": "string",
+          "description": "Type of business entity (sole_trader, partnership, limited_company, etc.)"
+        },
+        "registrationNumber": {
+          "type": "string",
+          "description": "Company registration number (Companies House)"
+        },
+        "dateOfIncorporation": {
+          "type": "string",
+          "description": "Date of business incorporation/registration"
+        },
+        "vatRegistered": {
+          "type": "string",
+          "description": "Is the business VAT registered (true/false)"
+        },
+        "vatNumber": {
+          "type": "string",
+          "description": "VAT registration number"
+        },
+        "addressLine1": {
+          "type": "string",
+          "description": "Business address line 1"
+        },
+        "addressLine2": {
+          "type": "string",
+          "description": "Business address line 2"
+        },
+        "city": {
+          "type": "string",
+          "description": "City/Town"
+        },
+        "county": {
+          "type": "string",
+          "description": "County"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "Postcode"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country code"
+        },
+        "industry": {
+          "type": "string",
+          "description": "Industry sector"
+        },
+        "businessDescription": {
+          "type": "string",
+          "description": "Brief description of business activities"
+        },
+        "numberOfEmployees": {
+          "type": "string",
+          "description": "Number of employees"
+        },
+        "website": {
+          "type": "string",
+          "description": "Business website URL"
+        },
+        "primaryContactName": {
+          "type": "string",
+          "description": "Primary contact person name"
+        },
+        "primaryEmail": {
+          "type": "string",
+          "description": "Primary email address"
+        },
+        "primaryPhone": {
+          "type": "string",
+          "description": "Primary phone number"
+        },
+        "mobilePhone": {
+          "type": "string",
+          "description": "Mobile phone number"
+        },
+        "directorTitle": {
+          "type": "string",
+          "description": "Director title (Mr, Mrs, Miss, Ms, Dr, etc.)"
+        },
+        "directorFirstName": {
+          "type": "string",
+          "description": "Director first name"
+        },
+        "directorLastName": {
+          "type": "string",
+          "description": "Director last name"
+        },
+        "directorDateOfBirth": {
+          "type": "string",
+          "description": "Director date of birth"
+        },
+        "directorNationality": {
+          "type": "string",
+          "description": "Director nationality"
+        },
+        "directorNationalInsuranceNumber": {
+          "type": "string",
+          "description": "Director National Insurance Number"
+        },
+        "directorAddressLine1": {
+          "type": "string",
+          "description": "Director residential address line 1"
+        },
+        "directorAddressLine2": {
+          "type": "string",
+          "description": "Director residential address line 2"
+        },
+        "directorCity": {
+          "type": "string",
+          "description": "Director city"
+        },
+        "directorCounty": {
+          "type": "string",
+          "description": "Director county"
+        },
+        "directorPostcode": {
+          "type": "string",
+          "description": "Director postcode"
+        },
+        "directorEmail": {
+          "type": "string",
+          "description": "Director email address"
+        },
+        "directorPhone": {
+          "type": "string",
+          "description": "Director phone number"
+        },
+        "directorOwnership": {
+          "type": "string",
+          "description": "Percentage ownership in business"
+        },
+        "politicallyExposed": {
+          "type": "string",
+          "description": "Is director a Politically Exposed Person (true/false)"
+        },
+        "accountType": {
+          "type": "string",
+          "description": "Type of business account"
+        },
+        "branchSortCode": {
+          "type": "string",
+          "description": "Preferred branch sort code"
+        },
+        "overdraftRequired": {
+          "type": "string",
+          "description": "Is an overdraft facility required (true/false)"
+        },
+        "overdraftAmount": {
+          "type": "string",
+          "description": "Overdraft amount requested (GBP)"
+        },
+        "debitCardRequired": {
+          "type": "string",
+          "description": "Business debit card required (true/false)"
+        },
+        "numberOfCards": {
+          "type": "string",
+          "description": "Number of debit cards needed"
+        },
+        "onlineBankingRequired": {
+          "type": "string",
+          "description": "Online banking access required (true/false)"
+        },
+        "mobileBankingRequired": {
+          "type": "string",
+          "description": "Mobile banking access required (true/false)"
+        },
+        "chequeBookRequired": {
+          "type": "string",
+          "description": "Cheque book required (true/false)"
+        },
+        "annualTurnover": {
+          "type": "string",
+          "description": "Expected annual turnover (GBP)"
+        },
+        "projectedTurnover": {
+          "type": "string",
+          "description": "Projected turnover for next year (GBP)"
+        },
+        "sourceOfFunds": {
+          "type": "string",
+          "description": "Primary source of business funds"
+        },
+        "monthlyCredits": {
+          "type": "string",
+          "description": "Expected number of monthly credits"
+        },
+        "monthlyDebits": {
+          "type": "string",
+          "description": "Expected number of monthly debits"
+        },
+        "monthlyTransactions": {
+          "type": "string",
+          "description": "Total expected monthly transactions"
+        },
+        "cashDeposits": {
+          "type": "string",
+          "description": "Will you be making cash deposits (true/false)"
+        },
+        "internationalPayments": {
+          "type": "string",
+          "description": "Will you make international payments (true/false)"
+        },
+        "termsAccepted": {
+          "type": "string",
+          "description": "Terms and conditions accepted (true/false)"
+        },
+        "informationAccurate": {
+          "type": "string",
+          "description": "Declaration that information provided is accurate (true/false)"
+        },
+        "authorizedToApply": {
+          "type": "string",
+          "description": "Authorized to apply on behalf of business (true/false)"
+        },
+        "creditCheckConsent": {
+          "type": "string",
+          "description": "Consent to credit checks (true/false)"
+        },
+        "signatureName": {
+          "type": "string",
+          "description": "Full name of person signing"
+        },
+        "signatureDate": {
+          "type": "string",
+          "description": "Date of signature"
+        },
+        "emailMarketing": {
+          "type": "string",
+          "description": "Consent to email marketing (true/false)"
+        },
+        "smsMarketing": {
+          "type": "string",
+          "description": "Consent to SMS marketing (true/false)"
+        },
+        "phoneMarketing": {
+          "type": "string",
+          "description": "Consent to phone marketing (true/false)"
+        }
+      }
+    },
+    "ApplicationResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "string",
+          "description": "Application submission success (true/false)"
+        },
+        "applicationId": {
+          "type": "string",
+          "description": "Unique application ID"
+        },
+        "referenceNumber": {
+          "type": "string",
+          "description": "Application reference number"
+        },
+        "status": {
+          "type": "string",
+          "description": "Application status"
+        },
+        "message": {
+          "type": "string",
+          "description": "Response message"
+        },
+        "submissionDate": {
+          "type": "string",
+          "description": "Submission timestamp"
+        }
+      }
+    },
+    "ApplicationStatusResponse": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string",
+          "description": "Application ID"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status (submitted, under_review, approved, declined)"
+        },
+        "statusMessage": {
+          "type": "string",
+          "description": "Current status message"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "description": "Last update timestamp"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "Account number (if approved)"
+        },
+        "sortCode": {
+          "type": "string",
+          "description": "Sort code (if approved)"
+        }
+      }
+    },
+    "ValidationResponse": {
+      "type": "object",
+      "properties": {
+        "valid": {
+          "type": "string",
+          "description": "Overall validation result (true/false)"
+        },
+        "errorCount": {
+          "type": "string",
+          "description": "Number of validation errors"
+        },
+        "errors": {
+          "type": "string",
+          "description": "Comma-separated list of validation errors"
+        },
+        "warningCount": {
+          "type": "string",
+          "description": "Number of validation warnings"
+        },
+        "warnings": {
+          "type": "string",
+          "description": "Comma-separated list of validation warnings"
+        }
+      }
+    },
+    "CompanyLookupResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "string",
+          "description": "Lookup success (true/false)"
+        },
+        "companyName": {
+          "type": "string",
+          "description": "Company name"
+        },
+        "companyNumber": {
+          "type": "string",
+          "description": "Company registration number"
+        },
+        "companyStatus": {
+          "type": "string",
+          "description": "Company status"
+        },
+        "incorporationDate": {
+          "type": "string",
+          "description": "Incorporation date"
+        },
+        "companyType": {
+          "type": "string",
+          "description": "Company type"
+        },
+        "addressLine1": {
+          "type": "string",
+          "description": "Registered address line 1"
+        },
+        "addressLine2": {
+          "type": "string",
+          "description": "Registered address line 2"
+        },
+        "city": {
+          "type": "string",
+          "description": "City"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "Postcode"
+        }
+      }
+    },
+    "SortCodeResponse": {
+      "type": "object",
+      "properties": {
+        "valid": {
+          "type": "string",
+          "description": "Sort code valid (true/false)"
+        },
+        "sortCode": {
+          "type": "string",
+          "description": "Sort code"
+        },
+        "branchName": {
+          "type": "string",
+          "description": "Branch name"
+        },
+        "branchAddress": {
+          "type": "string",
+          "description": "Branch address"
+        }
+      }
+    }
+  }
+}
+
