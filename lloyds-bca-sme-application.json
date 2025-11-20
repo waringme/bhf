@@ -1,93 +1,109 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Business Banking Enquiry Form API for SME",
-    "version": "1.0",
-    "title": "SME Business Banking Enquiry API"
+  "description": "Practice User API",
+  "version": "1.0",
+  "title": "Practice User API"
   },
-  "host": "author-p147324-e1509924.adobeaemcloud.com",
+  "host": "author-p147324-e1846469.adobeaemcloud.com",
   "schemes": [
-    "https"
+  "https"
   ],
   "paths": {
-    "/bin/business-account.json": {
-      "post": {
-        "summary": "Submit Business Banking Enquiry",
-        "description": "Submit a business banking enquiry form",
-        "operationId": "submitBusinessEnquiry",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "enquiry",
-            "description": "Business enquiry data",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/BusinessEnquiry"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    }
+  "/bin/user.json": {
+  "post": {
+  "summary": "Post user detail",
+  "description": "Post user detail",
+  "operationId": "postUser",
+  "consumes": [
+  "application/json"
+  ],
+  "produces": [
+  "application/json"
+  ],
+  "parameters": [
+  {
+  "in": "body",
+  "name": "userId",
+  "description": "user Id",
+  "required": true,
+  "schema": {
+  "$ref": "#/definitions/User"
+  }
+  }
+  ],
+  "responses": {
+  "200": {
+  "description": "OK",
+  "schema": {
+  "$ref": "#/definitions/User"
+  }
+  }
+  }
+  },
+  "get": {
+  "summary": "Get all users",
+  "description": "Returns list of users",
+  "operationId": "getLeadsByFilterUsingGET",
+  "consumes": [
+  "application/json"
+  ],
+  "produces": [
+  "application/json"
+  ],
+  "responses": {
+  "200": {
+  "description": "OK",
+  "schema": {
+  "$ref": "#/definitions/User"
+  }
+  }
+  }
+  }
+  }
   },
   "definitions": {
-    "BusinessEnquiry": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string",
-          "description": "Title (Mr, Mrs, Miss, Ms, Dr, etc.)"
-          },
-        "name": {
-          "type": "string",
-          "description": "Full name"
-        },
-        "companyName": {
-          "type": "string",
-          "description": "Company name"
-        },
-        "businessPostcode": {
-          "type": "string",
-          "description": "Business postcode"
-        },
-        "contactNumber": {
-          "type": "string",
-          "description": "Contact telephone number"},
-        "email": {
-          "type": "string",
-          "description": "Email address"
-        },
-        "businessSector": {
-          "type": "string",
-          "description": "Business sector/industry"
-        },
-        "currentCustomer": {
-          "type": "string",
-          "description": "Are you a current customer? (Yes/No)"
-        },
-        "purposeOfEnquiry": {
-          "type": "string",
-          "description": "Purpose of enquiry"
-        },
-        "lendingRequirements12Months": {
-          "type": "string",
-          "description": "Lending requirements over next 12 months (GBP)"
-        },
-        "additionalServices": {
-          "type": "array",
-          "description": "Additional services required (select all that apply)"
-        }
-      }
-    }
+  "User": {
+  "type": "object",
+  "properties": {
+  "firstName": {
+  "type": "string",
+  "description": "User's first name"
+  },
+  "lastName": {
+  "type": "string",
+  "description": "User's last name"
+  },
+  "title": {
+  "type": "string",
+  "description": "User's title (Mr, Mrs, Dr, etc.)"
+  },
+  "address1": {
+  "type": "string",
+  "description": "Primary address line"
+  },
+  "address2": {
+  "type": "string",
+  "description": "Secondary address line"
+  },
+  "city": {
+  "type": "string",
+  "description": "City name"
+  },
+  "county": {
+  "type": "string",
+  "description": "County or state name"
+  },
+  "postCode": {
+  "type": "string",
+  "description": "Postal/ZIP code"
+  },
+  "balanceAmount": {
+  "type": "string",
+  "description": "Account balance amount"
   }
-}
+  }
+  }
+  }
+  }
+  
