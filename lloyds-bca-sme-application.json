@@ -28,7 +28,7 @@
             "description": "user Id",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/ContactDetails"
             }
           }
         ],
@@ -36,7 +36,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/ContactDetails"
             }
           }
         }
@@ -55,7 +55,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/ContactDetails"
             }
           }
         }
@@ -69,7 +69,20 @@
       "properties": {
         "title": {
           "type": "string",
-          "description": "User's title (Mr, Mrs, Dr, etc.)"
+          "description": "User's title (Mr, Mrs, Dr, etc.)",
+          "enum": [
+            "Mr",
+            "Mrs",
+            "Miss",
+            "Ms",
+            "Dr",
+            "Prof",
+            "Rev",
+            "Sir",
+            "Lord",
+            "Lady",
+            "Other"
+          ]
         },
         "name": {
           "type": "string",
@@ -99,8 +112,27 @@
         },
         "businessType": {
           "type": "string",
-          "description": "Business type"
-          }
+          "description": "Business type/industry",
+          "enum": [
+            "Retail",
+            "Hospitality",
+            "Construction",
+            "Manufacturing",
+            "Technology",
+            "Professional Services",
+            "Healthcare",
+            "Education",
+            "Transport & Logistics",
+            "Agriculture",
+            "Real Estate",
+            "Financial Services",
+            "Arts & Entertainment",
+            "Media & Communications",
+            "Energy & Utilities",
+            "Charity & Non-Profit",
+            "Other"
+          ]
+        }
       }
 
       
