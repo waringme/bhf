@@ -1,142 +1,214 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "description": "Practice User API",
-    "version": "1.0",
-    "title": "Practice User API"
-  },
-  "host": "author-p147324-e1846469.adobeaemcloud.com",
-  "schemes": [
-    "https"
-  ],
-  "paths": {
-    "/bin/business-account-application.json": {
-      "post": {
-        "summary": "Post user detail",
-        "description": "Post user detail",
-        "operationId": "postUser",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "userId",
-            "description": "user Id",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ContactDetails"
+    "swagger": "2.0",
+    "info": {
+        "description": "Practice User API",
+        "version": "1.0",
+        "title": "Practice User API"
+    },
+    "host": "author-p147324-e1846469.adobeaemcloud.com",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/bin/business-account-application.json": {
+            "post": {
+                "summary": "Post user detail",
+                "description": "Post user detail",
+                "operationId": "postBusinessAccountApplication",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userId",
+                        "description": "user Id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactDetails"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ContactDetails"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Get all users",
+                "description": "Returns list of users",
+                "operationId": "getLeadsByFilterUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ContactDetails"
+                        }
+                    }
+                }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ContactDetails"
+        },
+        "/bin/business-size.json": {
+            "post": {
+                "summary": "Submit business size information",
+                "description": "Submit business size details",
+                "operationId": "postBusinessSize",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "businessSize",
+                        "description": "Business size data",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/BusinessSize"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BusinessSize"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Get business size information",
+                "description": "Returns business size details",
+                "operationId": "getBusinessSize",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BusinessSize"
+                        }
+                    }
+                }
             }
-          }
         }
-      },
-      "get": {
-        "summary": "Get all users",
-        "description": "Returns list of users",
-        "operationId": "getLeadsByFilterUsingGET",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ContactDetails"
+    },
+    "definitions": {
+        "ContactDetails": {
+            "type": "object",
+            "properties": {
+                "sizeOfBusiness": {
+                    "type": "string",
+                    "description": "Size of business",
+                    "enum": [
+                        "0-3 million",
+                        "\u00a33-25 million",
+                        "I am a school"
+                    ]
+                },
+                "title": {
+                    "type": "string",
+                    "description": "User's title (Mr, Mrs, Dr, etc.)",
+                    "enum": [
+                        "Mr",
+                        "Mrs",
+                        "Miss",
+                        "Ms",
+                        "Dr",
+                        "Prof",
+                        "Rev",
+                        "Sir",
+                        "Lord",
+                        "Lady",
+                        "Other"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "User's name"
+                },
+                "postCode": {
+                    "type": "string",
+                    "description": "Primary address line"
+                },
+                "contactTelephoneNumber": {
+                    "type": "string",
+                    "description": "Contact number"
+                },
+                "emailAddress": {
+                    "type": "string",
+                    "description": "Email address"
+                },
+                "businessName": {
+                    "type": "string",
+                    "description": "Business name"
+                },
+                "businessType": {
+                    "type": "string",
+                    "description": "Business type/industry",
+                    "enum": [
+                        "Retail",
+                        "Hospitality",
+                        "Construction",
+                        "Manufacturing",
+                        "Technology",
+                        "Professional Services",
+                        "Healthcare",
+                        "Education",
+                        "Transport & Logistics",
+                        "Agriculture",
+                        "Real Estate",
+                        "Financial Services",
+                        "Arts & Entertainment",
+                        "Media & Communications",
+                        "Energy & Utilities",
+                        "Charity & Non-Profit",
+                        "Other"
+                    ]
+                }
             }
-          }
+        },
+        "BusinessSize": {
+            "type": "object",
+            "properties": {
+                "sizeCategory": {
+                    "type": "string",
+                    "description": "Business size category",
+                    "enum": [
+                        "0-3 million",
+                        "\u00a33-25 million",
+                        "I am a school"
+                    ]
+                },
+                "turnover": {
+                    "type": "string",
+                    "description": "Annual turnover"
+                },
+                "numberOfEmployees": {
+                    "type": "string",
+                    "description": "Number of employees"
+                }
+            }
         }
-      }
     }
-  },
-  
-  "definitions": {
-    "ContactDetails": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string",
-          "description": "User's title (Mr, Mrs, Dr, etc.)",
-          "enum": [
-            "Mr",
-            "Mrs",
-            "Miss",
-            "Ms",
-            "Dr",
-            "Prof",
-            "Rev",
-            "Sir",
-            "Lord",
-            "Lady",
-            "Other"
-          ]
-        },
-        "name": {
-          "type": "string",
-          "description": "User's name"
-        },
-        "postCode": {
-          "type": "string",
-          "description": "Primary address line"
-        },
-        
-        "balanceAmount": {
-          "type": "string",
-          "description": "Account balance amount"
-        },
-
-"contactTelephoneNumber": {
-          "type": "string",
-          "description": "Contact number"
-        },
-   "emailAddress": {
-          "type": "string",
-          "description": "Email address"
-        },
-        "businessName": {
-          "type": "string",
-          "description": "Business name"
-        },
-        "businessType": {
-          "type": "string",
-          "description": "Business type/industry",
-          "enum": [
-            "Retail",
-            "Hospitality",
-            "Construction",
-            "Manufacturing",
-            "Technology",
-            "Professional Services",
-            "Healthcare",
-            "Education",
-            "Transport & Logistics",
-            "Agriculture",
-            "Real Estate",
-            "Financial Services",
-            "Arts & Entertainment",
-            "Media & Communications",
-            "Energy & Utilities",
-            "Charity & Non-Profit",
-            "Other"
-          ]
-        }
-      }
-
-      
-  }
-  }
-
 }
