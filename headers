@@ -1,0 +1,19 @@
+https://*.aem.page/*
+  access-control-allow-origin: https://experience.adobe.com
+  access-control-allow-credentials: true
+  access-control-allow-methods: GET, HEAD, OPTIONS
+  access-control-allow-headers: *
+
+https://*.aem.live/*
+  access-control-allow-origin: https://experience.adobe.com
+  access-control-allow-credentials: true
+  access-control-allow-methods: GET, HEAD, OPTIONS
+  access-control-allow-headers: *
+
+/*
+  access-control-allow-origin: https://experience.adobe.com
+  access-control-allow-credentials: true
+  access-control-allow-methods: GET, HEAD, OPTIONS
+  access-control-allow-headers: *
+
+
