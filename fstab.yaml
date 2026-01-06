@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p162352-e1740873.adobeaemcloud.com/bin/franklin.delivery/waringme/bhf/main"
+    url: "https://author-p147324-e1509924.adobeaemcloud.com/bin/franklin.delivery/waringme/bhf/main"
     type: "markup"
     suffix: ".html"
